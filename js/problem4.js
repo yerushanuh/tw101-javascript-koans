@@ -27,3 +27,34 @@
 */
 
 // Write your JavaScript here
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function countMoney(arrayNotes) {
+    var sum = 0;
+    var listOfNotes = "";
+    var shouldContinueSummation = true;
+
+    for (var i = 0; i < arrayNotes.length; i++) {
+        if (shouldContinueSummation && checkIfValid(arrayNotes[i])) {
+            sum += arrayNotes[i];
+        }
+        else {
+            shouldContinueSummation = false;
+        }
+
+        listOfNotes += arrayNotes[i];
+
+        if (i < arrayNotes.length - 1) {
+            listOfNotes += ", ";
+        }
+    }
+
+    changeElementText("#notes", listOfNotes);
+    changeElementText("#sum", sum);
+}
+
+function checkIfValid(note) {
+    return (note == 5 || note == 10 || note == 20 || note == 50 || note == 100 || note == 500 || note == 1000);
+}

@@ -34,3 +34,38 @@
  */
 
 // Write your JavaScript here
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function processAdText(arrayLines) {
+    var originalText = "";
+    var processedText = "";
+    var wordCount = 0;
+
+    var arrayReversedWords = reverseUrduWords(arrayLines[1]);
+
+    for (var i = 0; i < arrayLines.length; i++) {
+        for (var j = 0; j < arrayLines[i].length; j++) {
+            originalText += " " + arrayLines[i][j];
+            processedText += " " + (i == 1 ? arrayReversedWords[j] : arrayLines[i][j]);
+            wordCount++;
+        }
+
+        originalText += "\n";
+    }
+
+    changeElementText("#originalText", originalText);
+    changeElementText("#processedText", processedText);
+    changeElementText("#wordCount", wordCount);
+}
+
+function reverseUrduWords(arrayWords) {
+    var arrayReversedWords = new Array(arrayWords.length);
+
+    for (var i = 0; i < arrayWords.length; i++) {
+        arrayReversedWords[i] = arrayWords[arrayWords.length - 1 - i];
+    }
+
+    return arrayReversedWords;
+}

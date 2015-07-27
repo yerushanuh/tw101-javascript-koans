@@ -44,7 +44,15 @@ function isTrafficJam(numberOfAutoRickshaws, isAfterEightPm) {
     var answer = "maybe a";
 
     // write some code here!
+    if (numberOfAutoRickshaws != null) {
+        changeElementText("#numberOfRickshaws", numberOfAutoRickshaws);
+    }
 
+    if (isAfterEightPm != null) {
+        changeElementText("#beforeOrAfter", isAfterEightPm ? "after" : "before");
+    }
+
+    (numberOfAutoRickshaws > 40 && !isAfterEightPm) ? answer = "a" : answer = "no";
     changeElementText("#aOrNo", answer);
 }
 
